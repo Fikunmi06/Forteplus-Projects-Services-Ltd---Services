@@ -1,4 +1,4 @@
-/*
+﻿/*
 Master Style Sheet
 ----------------------------------------
 
@@ -50,7 +50,7 @@ Table of Content
         1. Theme Color Styles
 ======================================*/
 :root {
-  /*--themeColor: #F6BE07;*/
+  /*--themeColor: #9fdd5c;*/
   --themeColor: #9fdd5c;
   --lightGray: #D1D1D1;
   --regularText: #2B3139;
