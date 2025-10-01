@@ -45,6 +45,16 @@
       object-fit: cover;
       display: block;
     }
+    /* Contact form UI tweaks */
+    .box-shadow { padding: 1.25rem; border-radius: 12px; }
+    .form-control:focus { box-shadow: 0 0 0 .2rem rgba(159,221,92,0.15); border-color: var(--themeColor); }
+    textarea.form-control { min-height: 140px; resize: vertical; }
+    .form-label { font-weight: 600; font-size: 0.95rem; }
+    @media (max-width: 767px) {
+      .margin-t-30 { margin-top: 1rem; }
+      .text-end { text-align: center !important; }
+      .text-end .btn { width: 100%; }
+    }
   </style>
 
   <!--============================== Google Fonts ========================== -->
@@ -744,43 +754,39 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12">
-            <div class="box-shadow">
+            <div class="box-border margin-t-30">
               <form class="row gy-15" action="https://formsubmit.co/admin@forteplus.org" method="POST">
-                <!-- Formsubmit requires a verified destination email (admin@forteplus.org) -->
+                <!-- Formsubmit forwarding to your Zoho/Zoho-connected mailbox: admin@forteplus.org -->
+                <input type="hidden" name="_subject" value="New message from Forteplus website">
                 <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_subject" value="Website contact form message">
                 <div class="col-lg-6">
-                  <form class="row gy-15" action="https://formsubmit.co/admin@forteplus.org" method="POST">
-                    <!-- Formsubmit forwarding to your Zoho address: admin@forteplus.org -->
-                    <input type="hidden" name="_subject" value="New message from Forteplus website">
-                    <input type="hidden" name="_captcha" value="false">
-                    <div class="col-lg-6">
-                      <div class="row gy-15">
-                        <div class="col-12">
-                          <label for="inputName" class="form-label">Your Name*</label>
-                          <input type="text" class="form-control" id="inputName" name="name" required>
-                        </div>
-                        <div class="col-12">
-                          <label for="inputEmail4" class="form-label">Your Email*</label>
-                          <input type="email" class="form-control" id="inputEmail4" name="email" required>
-                        </div>
-                        <div class="col-12">
-                          <label for="inpuSubject" class="form-label">Subject*</label>
-                          <input type="text" class="form-control" id="inpuSubject" name="subject" required>
-                        </div>
-                      </div>
+                  <div class="row gy-15">
+                    <div class="col-12">
+                      <label for="inputName" class="form-label">Your Name*</label>
+                      <input type="text" class="form-control" id="inputName" name="name" required placeholder="Your full name">
                     </div>
-                    <div class="col-lg-6">
-                      <label for="inputMessage" class="form-label">Message*</label>
-                      <textarea rows="8" class="form-control" id="inputMessage" name="message" placeholder="" required></textarea>
+                    <div class="col-12">
+                      <label for="inputEmail4" class="form-label">Your Email*</label>
+                      <input type="email" class="form-control" id="inputEmail4" name="email" required placeholder="you@example.com">
                     </div>
-                    <div class="col-12 text-end margin-t-30">
-                      <button type="submit" class="btn main-btn">SEND A QUOTE</button>
+                    <div class="col-12">
+                      <label for="inpuSubject" class="form-label">Subject*</label>
+                      <input type="text" class="form-control" id="inpuSubject" name="subject" required placeholder="Subject (e.g. Request for quote)">
                     </div>
-                  </form>
-      </div>
-    </div>
-  </section>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <label for="inputMessage" class="form-label">Message*</label>
+                  <textarea rows="8" class="form-control" id="inputMessage" name="message" placeholder="Write your message here..." required></textarea>
+                </div>
+                <div class="col-12 text-end margin-t-30">
+                  <button type="submit" class="btn main-btn px-4 py-2">SEND MESSAGE</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
   <!--========================= Quote Section End ===========================-->
 
   <!--***********************************************************************-->
