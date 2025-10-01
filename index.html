@@ -745,35 +745,39 @@
         <div class="row">
           <div class="col-md-12">
             <div class="box-shadow">
-              <form class="row gy-15">
+              <form class="row gy-15" action="https://formsubmit.co/admin@forteplus.org" method="POST">
+                <!-- Formsubmit requires a verified destination email (admin@forteplus.org) -->
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_subject" value="Website contact form message">
                 <div class="col-lg-6">
-                  <div class="row gy-15">
-                    <div class="col-12">
-                      <label for="inputName" class="form-label">Your Name*</label>
-                      <input type="text" class="form-control" id="inputName">
+                  <form class="row gy-15" action="https://formsubmit.co/admin@forteplus.org" method="POST">
+                    <!-- Formsubmit forwarding to your Zoho address: admin@forteplus.org -->
+                    <input type="hidden" name="_subject" value="New message from Forteplus website">
+                    <input type="hidden" name="_captcha" value="false">
+                    <div class="col-lg-6">
+                      <div class="row gy-15">
+                        <div class="col-12">
+                          <label for="inputName" class="form-label">Your Name*</label>
+                          <input type="text" class="form-control" id="inputName" name="name" required>
+                        </div>
+                        <div class="col-12">
+                          <label for="inputEmail4" class="form-label">Your Email*</label>
+                          <input type="email" class="form-control" id="inputEmail4" name="email" required>
+                        </div>
+                        <div class="col-12">
+                          <label for="inpuSubject" class="form-label">Subject*</label>
+                          <input type="text" class="form-control" id="inpuSubject" name="subject" required>
+                        </div>
+                      </div>
                     </div>
-                    <div class="col-12">
-                      <label for="inputEmail4" class="form-label">Your Email*</label>
-                      <input type="email" class="form-control" id="inputEmail4">
+                    <div class="col-lg-6">
+                      <label for="inputMessage" class="form-label">Message*</label>
+                      <textarea rows="8" class="form-control" id="inputMessage" name="message" placeholder="" required></textarea>
                     </div>
-                    <div class="col-12">
-                      <label for="inpuSubject" class="form-label">Subject*</label>
-                      <input type="email" class="form-control" id="inpuSubject">
+                    <div class="col-12 text-end margin-t-30">
+                      <button type="submit" class="btn main-btn">SEND A QUOTE</button>
                     </div>
-                  </div>
-                </div>
-                <div class="col-lg-6">
-                  <label for="inputMessage" class="form-label">Message*</label>
-                  <textarea rows="8" class="form-control" id="inputMessage" placeholder="">
-                  </textarea>
-                </div>
-                <div class="col-12 text-end margin-t-30">
-                  <button type="submit" class="btn main-btn">SEND A QUOTE</button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
+                  </form>
       </div>
     </div>
   </section>
