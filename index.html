@@ -755,7 +755,10 @@
         <div class="row">
           <div class="col-md-12">
             <div class="box-border margin-t-30">
-              <form class="row gy-15" action="https://formsubmit.co/admin@forteplus.org" method="POST">
+              <!-- EmailJS integration: replace SERVICE_ID, TEMPLATE_ID, PUBLIC_KEY with your EmailJS values -->
+              <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3.2.0/dist/email.min.js"></script>
+              <script>emailjs.init('PUBLIC_KEY');</script>
+              <form id="index-contact-form" class="row gy-15" onsubmit="return sendEmailJS(event, 'index-contact-form')">
                 <!-- Formsubmit forwarding to your Zoho/Zoho-connected mailbox: admin@forteplus.org -->
                 <input type="hidden" name="_subject" value="New message from Forteplus website">
                 <input type="hidden" name="_captcha" value="false">
@@ -789,6 +792,31 @@
         </div>
       </section>
       <script>
+        // EmailJS sender: replace SERVICE_ID and TEMPLATE_ID with your EmailJS values in production.
+        function sendEmailJS(e, formId) {
+          e.preventDefault();
+          if (typeof emailjs === 'undefined' || emailjs.send === undefined) {
+            // EmailJS not configured -> fall back to normal submission
+            document.getElementById(formId).submit();
+            return false;
+          }
+          var form = document.getElementById(formId);
+          var data = {
+            name: form.querySelector('[name="name"]').value,
+            email: form.querySelector('[name="email"]').value,
+            subject: form.querySelector('[name="subject"]').value,
+            message: form.querySelector('[name="message"]').value
+          };
+          emailjs.send('SERVICE_ID', 'TEMPLATE_ID', data)
+            .then(function(){
+              alert('Message sent — thank you!');
+              form.reset();
+            }, function(error){
+              console.error('EmailJS error', error);
+              alert('Could not send message with EmailJS. Please try again or use WhatsApp.');
+            });
+          return false;
+        }
         // WhatsApp button: opens WhatsApp with prefilled message from the form
         (function(){
           function openWhatsApp(form) {
