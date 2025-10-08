@@ -255,92 +255,14 @@
             <h3 class="header_underline-lft">Send us a message</h3>
             <!--Form Start-->
             <div class="box-border margin-t-30">
-              <!-- EmailJS integration: replace SERVICE_ID, TEMPLATE_ID, PUBLIC_KEY with your EmailJS values -->
-              <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3.2.0/dist/email.min.js"></script>
-              <script>emailjs.init('PUBLIC_KEY');</script>
-              <form id="contact-contact-form" class="row gy-15" onsubmit="return sendEmailJS(event, 'contact-contact-form')">
-                <input type="hidden" name="_subject" value="New message from Forteplus website">
-                <input type="hidden" name="_captcha" value="false">
-                <div class="col-lg-6">
-                  <div class="row gy-15">
-                    <div class="col-12">
-                      <label for="inputName" class="form-label">Your Name*</label>
-                      <input type="text" class="form-control" id="inputName" name="name">
-                    </div>
-                    <div class="col-12">
-                      <label for="inputEmail4" class="form-label">Your Email*</label>
-                      <input type="email" class="form-control" id="inputEmail4" name="email">
-                    </div>
-                    <div class="col-12">
-                      <label for="inpuSubject" class="form-label">Subject*</label>
-                      <input type="text" class="form-control" id="inpuSubject" name="subject">
-                    </div>
-                  </div>
+              <!-- Zoho form embed: Contact with feedback -->
+                <div class="box-border margin-t-30">
+                  <iframe aria-label='Contact with feedback' frameborder="0" style="height:500px;width:99%;border:none;" src='https://forms.zohopublic.com/virtualoffice1adminfort11/form/Contactwithfeedback/formperma/OuvKWjOQUSaeCo09pb-ayYo9JbfbAbi8kkTWtNDslOQ'></iframe>
                 </div>
-                <div class="col-lg-6">
-                  <label for="inputMessage" class="form-label">Message*</label>
-                  <textarea rows="8" class="form-control" id="inputMessage" name="message" placeholder=""></textarea>
-                </div>
-                <div class="col-12 text-end margin-t-30 d-flex justify-content-end gap-2">
-                  <button type="button" id="whatsapp-btn-contact" class="btn btn-success px-3 py-2">WhatsApp</button>
-                  <button type="submit" class="btn main-btn">SEND MESSAGE</button>
-                </div>
-              </form>
+              <!--Form End-->
             </div>
-            <!--Form End-->
           </div>
         </div>
-      </div>
-      <script>
-        (function(){
-          function openWhatsApp(form) {
-            var name = encodeURIComponent((form.querySelector('[name="name"]').value||'').trim());
-            var subject = encodeURIComponent((form.querySelector('[name="subject"]').value||'').trim());
-            var message = encodeURIComponent((form.querySelector('[name="message"]').value||'').trim());
-            var text = '';
-            if (subject) text += '*'+subject+'*%0A';
-            if (name) text += 'From: '+name+'%0A%0A';
-            if (message) text += message;
-            var phone = '2349057240646';
-            var url = 'https://wa.me/'+phone+'?text='+text;
-            window.open(url, '_blank');
-          }
-          var waBtn = document.getElementById('whatsapp-btn-contact');
-          if (waBtn) {
-            waBtn.addEventListener('click', function(e){
-              var form = waBtn.closest('form');
-              if (form) openWhatsApp(form);
-            });
-          }
-
-          // EmailJS sender: replace SERVICE_ID and TEMPLATE_ID with your EmailJS values in production.
-          window.sendEmailJS = function(e, formId) {
-            e.preventDefault();
-            if (typeof emailjs === 'undefined' || emailjs.send === undefined) {
-              // EmailJS not configured -> fall back to normal submission
-              document.getElementById(formId).submit();
-              return false;
-            }
-            var form = document.getElementById(formId);
-            var data = {
-              name: form.querySelector('[name="name"]').value,
-              email: form.querySelector('[name="email"]').value,
-              subject: form.querySelector('[name="subject"]').value,
-              message: form.querySelector('[name="message"]').value
-            };
-            emailjs.send('SERVICE_ID', 'TEMPLATE_ID', data)
-              .then(function(){
-                alert('Message sent — thank you!');
-                form.reset();
-              }, function(error){
-                console.error('EmailJS error', error);
-                alert('Could not send message with EmailJS. Please try again or use WhatsApp.');
-              });
-            return false;
-          };
-
-        })();
-      </script>
     </div>
   </section>
   <!--====================== Message Sending Section End ====================-->
@@ -454,6 +376,11 @@
   <!--====================== Footer Section End =============================-->
 
   <!--===================== All JavaScript Libraries Start===================-->
+  <!-- WhatsApp floating button -->
+  <a id="whatsapp-floating" href="https://wa.me/2349057240646?text=Hello%20Forteplus%2C%20I%20would%20like%20to%20enquire%20about%20your%20services." target="_blank" rel="noopener" aria-label="WhatsApp chat" style="position:fixed;right:20px;bottom:20px;z-index:9999;width:60px;height:60px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;color:#fff;box-shadow:0 6px 18px rgba(0,0,0,.2);">
+    <i class="fa fa-whatsapp" style="font-size:26px;"></i>
+  </a>
+
   <!-- Jquery -->
   <script src="/assets/js/vendor/jquery-v3.6.1.min.js"></script>
   <!-- Bootstrap -->
