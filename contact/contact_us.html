@@ -255,7 +255,9 @@
             <h3 class="header_underline-lft">Send us a message</h3>
             <!--Form Start-->
             <div class="box-border margin-t-30">
-              <form class="row gy-15">
+              <form class="row gy-15" action="https://formsubmit.co/admin@forteplus.org" method="POST">
+                <input type="hidden" name="_subject" value="New message from Forteplus website">
+                <input type="hidden" name="_captcha" value="false">
                 <div class="col-lg-6">
                   <div class="row gy-15">
                     <div class="col-12">
@@ -277,7 +279,8 @@
                   <textarea rows="8" class="form-control" id="inputMessage" placeholder="">
                   </textarea>
                 </div>
-                <div class="col-12 text-end margin-t-30">
+                <div class="col-12 text-end margin-t-30 d-flex justify-content-end gap-2">
+                  <button type="button" id="whatsapp-btn-contact" class="btn btn-success px-3 py-2">WhatsApp</button>
                   <button type="submit" class="btn main-btn">SEND MESSAGE</button>
                 </div>
               </form>
@@ -286,6 +289,29 @@
           </div>
         </div>
       </div>
+      <script>
+        (function(){
+          function openWhatsApp(form) {
+            var name = encodeURIComponent((form.querySelector('[name="name"]').value||'').trim());
+            var subject = encodeURIComponent((form.querySelector('[name="subject"]').value||'').trim());
+            var message = encodeURIComponent((form.querySelector('[name="message"]').value||'').trim());
+            var text = '';
+            if (subject) text += '*'+subject+'*%0A';
+            if (name) text += 'From: '+name+'%0A%0A';
+            if (message) text += message;
+            var phone = '2349057240646';
+            var url = 'https://wa.me/'+phone+'?text='+text;
+            window.open(url, '_blank');
+          }
+          var waBtn = document.getElementById('whatsapp-btn-contact');
+          if (waBtn) {
+            waBtn.addEventListener('click', function(e){
+              var form = waBtn.closest('form');
+              if (form) openWhatsApp(form);
+            });
+          }
+        })();
+      </script>
     </div>
   </section>
   <!--====================== Message Sending Section End ====================-->
